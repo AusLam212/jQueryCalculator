@@ -42,15 +42,18 @@
                         <button id="button-4" class="btn btn-primary number" value="4"><span>4</span></button>
                         <button id="button-5" class="btn btn-primary number" value="5"><span>5</span></button>
                         <button id="button-6" class="btn btn-primary number" value="6"><span>6</span></button>
-                        <button id="button-minus" class="btn btn-danger operator" value="minus"><span>&minus;</span></button>
+                        <button id="button-minus" class="btn btn-danger operator"
+                            value="minus"><span>&minus;</span></button>
                         <br><br>
                         <button id="button-7" class="btn btn-primary number" value="7"><span>7</span></button>
                         <button id="button-8" class="btn btn-primary number" value="8"><span>8</span></button>
                         <button id="button-9" class="btn btn-primary number" value="9"><span>9</span></button>
-                        <button id="button-multiply" class="btn btn-danger operator" value="times"><span>&times;</span></button>
+                        <button id="button-multiply" class="btn btn-danger operator"
+                            value="times"><span>&times;</span></button>
                         <br><br>
                         <button id="button-0" class="btn btn-primary number" value="0"><span>0</span></button>
-                        <button id="button-divide" class="btn btn-danger operator" value="divide"><span>&divide;</span></button>
+                        <button id="button-divide" class="btn btn-danger operator"
+                            value="divide"><span>&divide;</span></button>
                         <button id="button-power" class="btn btn-danger operator" value="power"><span>^</span></button>
                         <button id="button-equal" class="btn btn-success equal" value="equals"><span>=</span></button>
                         <br><br>
@@ -76,10 +79,46 @@
     </div>
 
     <script type="text/javascript">
-        $(document).ready(function() {
 
-            // Your code here...
+        $(document).ready(function () {
+            // Variables
+            var firstValue = document.querySelector("#first-number")
+            var secondValue = document.querySelector("#second-number")
+            var operatorSelected = document.querySelector("#operator")
+            var result = document.querySelector("#result")
+            var operatorBool = false
+            // event.target.value
 
+            // When number is clicked, store that to the first value variable that displays in the window
+            // // When another number is clicked, add that to the first value as a string element
+            
+            $(".number").on("click", function () {
+                if (operatorBool === false) {var firstValueText = $(event.target).text()
+                $("#first-number").append(firstValueText)}
+
+                else if (operatorBool === true) {
+                    var secondValueText = $(event.target).text()
+                $("#second-number").append(secondValueText)
+                }
+            })
+
+            $(".operator").on("click", function() {
+                var operatorText = $(event.target).text()
+                $("#operator").text(operatorText);
+                operatorBool = true
+            })
+
+
+
+            // When an operator is clicked, display that operator in the window
+
+            // The next time a number is clicked, it should be added to the second window
+
+            // When equal is clicked, parse the two strings into numbers
+            // // Depending on the operator clicked, math
+
+            //Maybe use a counter to decide which window to produce to, 
+            // If operator is clicked, count++. If count is > 0 produce results to second window
 
         });
     </script>
